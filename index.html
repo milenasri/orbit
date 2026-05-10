@@ -591,32 +591,63 @@
 </footer>
 
 <script>
-  function handleSignup() {
-    const email = document.getElementById('email-input').value;
+  // ← PASTE YOUR TALLY FORM ID HERE (the XXXXXX part from tally.so/r/XXXXXX)
+  const TALLY_FORM_ID = 'lbK7xV';
+
+  async function submitToTally(email) {
+    const res = await fetch(`https://tally.so/r/${TALLY_FORM_ID}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ email }),
+    });
+    return res.ok || res.status === 0; // Tally returns opaque on success
+  }
+
+  async function handleSignup() {
+    const input = document.getElementById('email-input');
+    const email = input.value.trim();
     if (!email || !email.includes('@')) {
-      document.getElementById('email-input').focus();
-      document.getElementById('email-input').style.borderColor = '#C4622D';
+      input.focus();
+      input.style.borderColor = '#C4622D';
       return;
     }
+    const btn = document.querySelector('#signup-form button');
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+
+    await submitToTally(email);
+
     document.getElementById('signup-form').style.display = 'none';
     const msg = document.getElementById('success-msg');
     msg.style.display = 'flex';
-    // Update count optimistically
     document.querySelector('.proof-text').innerHTML = '<strong>48 people</strong> already on the waitlist';
   }
 
-  function handleSignup2() {
-    const email = document.getElementById('email-input-2').value;
+  async function handleSignup2() {
+    const input = document.getElementById('email-input-2');
+    const email = input.value.trim();
     if (!email || !email.includes('@')) {
-      document.getElementById('email-input-2').focus();
+      input.focus();
       return;
     }
-    document.getElementById('email-input-2').value = '';
-    document.getElementById('email-input-2').placeholder = '✓ You\'re on the list!';
-    document.getElementById('email-input-2').disabled = true;
-    document.querySelector('.final-cta button').textContent = 'Done ✓';
-    document.querySelector('.final-cta button').style.background = '#6B8C6E';
+    const btn = document.querySelector('.final-cta button');
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+
+    await submitToTally(email);
+
+    input.value = '';
+    input.placeholder = '✓ You\'re on the list!';
+    input.disabled = true;
+    btn.textContent = 'Done ✓';
+    btn.style.background = '#6B8C6E';
   }
+
+  // Allow pressing Enter in email fields
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('email-input').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup(); });
+    document.getElementById('email-input-2').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup2(); });
+  });
 </script>
 </body>
 </html>
