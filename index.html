@@ -33,7 +33,6 @@
     min-height: 100vh;
   }
 
-  /* Grain texture overlay */
   body::before {
     content: '';
     position: fixed;
@@ -44,7 +43,6 @@
     opacity: 0.4;
   }
 
-  /* Nav */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -86,7 +84,6 @@
     letter-spacing: 0.3px;
   }
 
-  /* Hero */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -96,7 +93,6 @@
     position: relative;
   }
 
-  /* Decorative circles in background */
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -136,7 +132,6 @@
     animation-duration: 80s;
   }
 
-  /* Dots orbiting on ring-1 */
   .dot {
     position: absolute;
     width: 6px; height: 6px;
@@ -225,61 +220,31 @@
     animation: fadeUp 0.8s ease 0.35s forwards;
   }
 
-  /* Signup form */
   .form-wrap {
     opacity: 0;
     animation: fadeUp 0.8s ease 0.5s forwards;
   }
 
-  .form {
-    display: flex;
-    gap: 10px;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  .form input[type="email"] {
-    flex: 1;
-    padding: 14px 18px;
+  .cta-btn {
+    padding: 16px 36px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--ink);
-    background: #fff;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  .form input[type="email"]::placeholder { color: var(--ink-muted); }
-
-  .form input[type="email"]:focus {
-    border-color: var(--terracotta);
-    box-shadow: 0 0 0 3px rgba(196,98,45,0.1);
-  }
-
-  .form button {
-    padding: 14px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     color: #fff;
     background: var(--terracotta);
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s, transform 0.15s;
     letter-spacing: 0.2px;
+    transition: background 0.2s, transform 0.15s;
   }
 
-  .form button:hover {
+  .cta-btn:hover {
     background: #b3561f;
     transform: translateY(-1px);
   }
 
-  .form button:active { transform: translateY(0); }
+  .cta-btn:active { transform: translateY(0); }
 
   .form-note {
     margin-top: 14px;
@@ -288,31 +253,11 @@
     letter-spacing: 0.1px;
   }
 
-  /* Success state */
-  .success-msg {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 24px;
-    background: rgba(107,140,110,0.1);
-    border: 1px solid rgba(107,140,110,0.25);
-    border-radius: 10px;
-    color: var(--sage);
-    font-size: 14px;
-    font-weight: 500;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-
-  .success-msg svg { flex-shrink: 0; }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Social proof */
   .social-proof {
     margin-top: 48px;
     opacity: 0;
@@ -323,7 +268,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: -8px;
     margin-bottom: 10px;
   }
 
@@ -354,7 +298,6 @@
 
   .proof-text strong { color: var(--ink-soft); font-weight: 500; }
 
-  /* Why section */
   .why {
     padding: 100px 40px;
     max-width: 1000px;
@@ -381,7 +324,6 @@
     .why-grid { grid-template-columns: 1fr; }
     nav { padding: 16px 20px; }
     .hero { padding: 100px 24px 60px; }
-    .form { flex-direction: column; }
     .why { padding: 70px 24px; }
     .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
   }
@@ -429,7 +371,6 @@
     color: var(--ink-soft);
   }
 
-  /* Quote section */
   .quote-section {
     padding: 80px 40px;
     text-align: center;
@@ -456,7 +397,6 @@
     font-weight: 400;
   }
 
-  /* Final CTA */
   .final-cta {
     padding: 100px 40px;
     text-align: center;
@@ -478,7 +418,6 @@
     margin-bottom: 40px;
   }
 
-  /* Footer */
   footer {
     padding: 28px 40px;
     border-top: 1px solid var(--border);
@@ -502,7 +441,7 @@
 
 <nav>
   <div class="logo">Orbit<span></span></div>
-  <a href="#waitlist">Join waitlist →</a>
+  <a href="#waitlist" onclick="openTally(); return false;">Join waitlist →</a>
 </nav>
 
 <section class="hero">
@@ -522,16 +461,8 @@
     <p class="subhead">Orbit is a gentle relationship manager for your friendships — reminders, notes, and nudges that help you show up for the people who matter most.</p>
 
     <div class="form-wrap" id="waitlist">
-      <div class="form" id="signup-form">
-        <input type="email" id="email-input" placeholder="your@email.com" autocomplete="email">
-        <button onclick="handleSignup()">Get early access</button>
-      </div>
-      <div class="success-msg" id="success-msg">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.4"/>
-          <path d="M4.5 8L7 10.5L11.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        You're on the list — we'll be in touch soon.
+      <div style="display:flex;justify-content:center;">
+        <button class="cta-btn" onclick="openTally()">Join the waitlist</button>
       </div>
       <p class="form-note">No spam, ever. Just an early invite when we launch.</p>
     </div>
@@ -577,9 +508,8 @@
 <section class="final-cta">
   <h2>Be the friend you want to be.</h2>
   <p>Join the waitlist and get early access when we launch.</p>
-  <div class="form" style="justify-content:center;">
-    <input type="email" id="email-input-2" placeholder="your@email.com" autocomplete="email">
-    <button onclick="handleSignup2()">Get early access</button>
+  <div style="display:flex;justify-content:center;">
+    <button class="cta-btn" onclick="openTally()">Join the waitlist</button>
   </div>
 </section>
 
@@ -592,57 +522,9 @@
 
 <script src="https://tally.so/widgets/embed.js"></script>
 <script>
-  const TALLY_FORM_ID = 'lbK7xV';
-
-  function openTally(email) {
-    Tally.openPopup(TALLY_FORM_ID, {
-      layout: 'modal',
-      hideTitle: false,
-      hiddenFields: { email: email },
-      onSubmit: () => {
-        // Hero form success
-        document.getElementById('signup-form').style.display = 'none';
-        const msg = document.getElementById('success-msg');
-        msg.style.display = 'flex';
-        document.querySelector('.proof-text').innerHTML = '<strong>48 people</strong> already on the waitlist';
-        // Bottom form success
-        const input2 = document.getElementById('email-input-2');
-        if (input2) {
-          input2.value = '';
-          input2.placeholder = '✓ You\'re on the list!';
-          input2.disabled = true;
-        }
-        const btn2 = document.querySelector('.final-cta button');
-        if (btn2) { btn2.textContent = 'Done ✓'; btn2.style.background = '#6B8C6E'; }
-      }
-    });
+  function openTally() {
+    Tally.openPopup('lbK7xV', { layout: 'modal' });
   }
-
-  function handleSignup() {
-    const input = document.getElementById('email-input');
-    const email = input.value.trim();
-    if (!email || !email.includes('@')) {
-      input.focus();
-      input.style.borderColor = '#C4622D';
-      return;
-    }
-    openTally(email);
-  }
-
-  function handleSignup2() {
-    const input = document.getElementById('email-input-2');
-    const email = input.value.trim();
-    if (!email || !email.includes('@')) {
-      input.focus();
-      return;
-    }
-    openTally(email);
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('email-input').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup(); });
-    document.getElementById('email-input-2').addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup2(); });
-  });
 </script>
 </body>
 </html>
