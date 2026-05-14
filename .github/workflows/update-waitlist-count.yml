@@ -1,6 +1,13 @@
 name: Update waitlist count
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "waitlist-count.js"
+      - ".github/workflows/update-waitlist-count.yml"
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:
