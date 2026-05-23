@@ -18,6 +18,16 @@ test('hosted site exposes legal and support pages at the repo root', () => {
   }
 });
 
+test('hosted site uses the current support email address', () => {
+  const supportEmail = 'matthewt0821@hotmail.com';
+
+  for (const fileName of ['support.html', 'terms.html']) {
+    const page = fs.readFileSync(path.join(root, fileName), 'utf8');
+    assert.match(page, new RegExp(`mailto:${supportEmail}`));
+    assert.doesNotMatch(page, /support@orbit\.care/);
+  }
+});
+
 test('landing page links legal and support pages only from the footer', () => {
   const page = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
   const footer = page.match(/<footer[\s\S]*<\/footer>/i)?.[0] ?? '';
