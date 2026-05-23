@@ -18,13 +18,21 @@ test('hosted site exposes legal and support pages at the repo root', () => {
   }
 });
 
-test('hosted site uses the current support email address', () => {
-  const supportEmail = 'matthewt0821@hotmail.com';
+test('hosted legal and support pages use the current email address', () => {
+  const currentEmail = 'matthewt0821@hotmail.com';
 
-  for (const fileName of ['support.html', 'terms.html']) {
+  for (const fileName of [
+    'privacy.html',
+    'terms.html',
+    'support.html',
+    'delete-account.html',
+  ]) {
     const page = fs.readFileSync(path.join(root, fileName), 'utf8');
-    assert.match(page, new RegExp(`mailto:${supportEmail}`));
-    assert.doesNotMatch(page, /support@orbit\.care/);
+    const emailMatches = page.match(/mailto:([^"]+)|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g) ?? [];
+
+    for (const match of emailMatches) {
+      assert.ok(match.includes(currentEmail), `${fileName} contains outdated email ${match}`);
+    }
   }
 });
 
