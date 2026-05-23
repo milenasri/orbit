@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Orbit beta privacy policy.">
+<title>Orbit Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..800,80,1&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#F5F0EB; --orange:#E07830; --bg:#101010; --panel:#181818; --muted:#A49C94; --border:rgba(245,240,235,.13); --display:'Fraunces', Georgia, serif; --body:'Nunito Sans','Helvetica Neue',sans-serif; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: radial-gradient(circle at 80% 0, rgba(224,120,48,.18), transparent 28rem), var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.6; }
+  main { width: min(880px, calc(100% - 36px)); margin: 0 auto; padding: 56px 0; }
+  a { color: var(--ink); }
+  .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+  .brand img { width: 48px; height: 48px; border-radius: 50%; }
+  .brand span, h1, h2 { font-family: var(--display); }
+  h1 { margin: 48px 0 14px; font-size: clamp(3rem, 9vw, 5.8rem); line-height: 1; }
+  h2 { margin: 34px 0 8px; font-size: clamp(1.7rem, 4vw, 2.5rem); }
+  p, li { color: var(--muted); }
+  .panel { margin-top: 28px; padding: clamp(22px, 4vw, 34px); border: 1px solid var(--border); border-radius: 28px; background: rgba(245,240,235,.055); }
+  .meta { color: var(--orange); font-weight: 700; }
+  footer { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="brand" href="index.html" aria-label="Orbit home">
+    <img src="orbit_brand/icons/icon-dark-256x256.png" alt="" aria-hidden="true">
+    <span>orbit</span>
+  </a>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Beta policy. Last updated May 23, 2026.</p>
+  <section class="panel">
+    <h2>What Orbit stores</h2>
+    <p>Orbit stores account information, profile details, relationships you add, notes, birthdays, contact methods, tags, interaction history, hangout plans, and app preferences.</p>
+    <h2>Contacts</h2>
+    <p>When you choose contact import, Orbit opens your device contact picker so you can select one person at a time. Orbit reads the selected contact's name, phone numbers, and email addresses, and only saves contacts you import into your account. Orbit does not import native contact notes or message contacts automatically.</p>
+    <h2>AI drafts</h2>
+    <p>When you request an AI draft, Orbit may send the selected relationship profile, notes, recent activity, and hangout context to our AI provider to generate a draft. Drafts are never sent automatically. You review and send them yourself.</p>
+    <h2>Third parties</h2>
+    <p>Orbit uses Supabase for authentication, database storage, and Edge Functions. Orbit uses OpenAI for AI message drafting during the beta. The website waitlist uses Tally.</p>
+    <h2>Children</h2>
+    <p>Orbit is not intended for children under 13. Do not create an account or submit personal information if you are under 13.</p>
+    <h2>Deletion</h2>
+    <p>You can delete your account in the mobile app settings. Account deletion removes your Supabase auth user and user-owned Orbit data through database cascades. You can also request deletion at <a href="mailto:privacy@orbit.care">privacy@orbit.care</a>.</p>
+    <h2>Contact</h2>
+    <p>For privacy questions, email <a href="mailto:privacy@orbit.care">privacy@orbit.care</a>.</p>
+  </section>
+  <footer>
+    <a href="terms.html">Terms</a>
+    <a href="support.html">Support</a>
+    <a href="delete-account.html">Delete account</a>
+  </footer>
+</main>
+</body>
+</html>

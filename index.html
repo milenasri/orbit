@@ -235,6 +235,10 @@
     align-items: center;
   }
 
+  .hero-inner > * {
+    min-width: 0;
+  }
+
   h1,
   h2 {
     max-width: 800px;
@@ -452,6 +456,30 @@
     font-weight: 300;
   }
 
+  .site-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 18px;
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: 34px clamp(18px, 4vw, 54px) 46px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .footer-links a {
+    color: var(--black);
+  }
+
   @media (max-width: 900px) {
     section {
       padding: 92px 0;
@@ -482,6 +510,7 @@
 
   @media (max-width: 560px) {
     .topbar {
+      gap: 12px;
       padding: 2px 16px;
     }
 
@@ -505,11 +534,22 @@
     }
 
     h1 {
-      font-size: clamp(4.3rem, 19vw, 5.6rem);
+      max-width: 100%;
+      font-size: clamp(3rem, 13.5vw, 3.7rem);
     }
 
     h1 em {
-      margin-left: clamp(1.5rem, 9vw, 3rem);
+      max-width: 8ch;
+      margin-left: 0;
+    }
+
+    h1 span {
+      max-width: 7ch;
+    }
+
+    h1 span,
+    h1 em {
+      overflow-wrap: break-word;
     }
 
     h2 {
@@ -517,7 +557,9 @@
     }
 
     .lead {
+      max-width: 100%;
       font-size: 1.03rem;
+      overflow-wrap: break-word;
     }
 
     .actions {
@@ -530,6 +572,20 @@
 
     .social-proof {
       align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .device {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .prompt strong,
+    .prompt p {
+      overflow-wrap: anywhere;
+    }
+
+    .site-footer {
       flex-direction: column;
     }
   }
@@ -626,6 +682,16 @@
       </div>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <p>Orbit beta. Private relationship memory, user-approved actions.</p>
+    <nav class="footer-links" aria-label="Legal and support">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+      <a href="delete-account.html">Delete account</a>
+    </nav>
+  </footer>
 
 <script src="https://tally.so/widgets/embed.js"></script>
 <script src="waitlist-count.js"></script>
