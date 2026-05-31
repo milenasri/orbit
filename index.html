@@ -280,6 +280,15 @@
     font-weight: 300;
   }
 
+  .eyebrow {
+    margin-bottom: 14px;
+    color: var(--orange);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
   .actions {
     display: flex;
     flex-wrap: wrap;
@@ -407,6 +416,54 @@
     align-items: center;
   }
 
+  .demo {
+    grid-template-columns: minmax(0, 0.82fr) minmax(340px, 1.18fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+
+  .demo-copy {
+    align-self: center;
+  }
+
+  .demo-copy h2 {
+    max-width: 560px;
+    font-size: clamp(3rem, 6vw, 5.8rem);
+  }
+
+  .demo-frame {
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    border: 1px solid rgba(245, 240, 235, 0.14);
+    border-radius: 28px;
+    background:
+      linear-gradient(145deg, rgba(245, 240, 235, 0.11), rgba(245, 240, 235, 0.035)),
+      rgba(16, 16, 16, 0.78);
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.36);
+  }
+
+  .demo-frame::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    z-index: 0;
+    border-radius: 21px;
+    box-shadow: inset 0 0 0 1px rgba(245, 240, 235, 0.08);
+    pointer-events: none;
+  }
+
+  .demo-video {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    background: #0B0B0B;
+    object-fit: cover;
+  }
+
   .solution-stack {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -505,6 +562,10 @@
 
     .solution-row {
       min-height: auto;
+    }
+
+    .demo {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -620,6 +681,7 @@
           <p class="lead">The best relationship builders aren't the ones who care the most. They're the ones who follow through. Orbit keeps you organized, consistent, and present for the people who matter.</p>
           <div class="actions">
             <button class="button" type="button" onclick="openTally()">Join the waitlist</button>
+            <a class="button secondary" href="#demo">Watch demo</a>
           </div>
           <div class="social-proof" aria-label="Waitlist signups">
             <div class="avatars" aria-hidden="true">
@@ -652,6 +714,21 @@
             </div>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <section class="demo" id="demo" aria-labelledby="demo-title">
+      <div class="demo-copy">
+        <p class="eyebrow">Product demo</p>
+        <h2 id="demo-title">See Orbit in motion.</h2>
+        <p class="lead">A quick look at how Orbit helps you remember who matters, understand when to reach out, and turn good intentions into plans.</p>
+      </div>
+
+      <div class="demo-frame">
+        <video class="demo-video" controls playsinline preload="metadata" aria-label="Orbit product demo video">
+          <source src="media/orbit-product-demo.mp4" type="video/mp4">
+          <a href="media/orbit-product-demo.mp4">Download the Orbit product demo video.</a>
+        </video>
       </div>
     </section>
 
