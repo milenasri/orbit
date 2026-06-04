@@ -19,7 +19,7 @@ test('hosted site exposes legal and support pages at the repo root', () => {
 });
 
 test('hosted legal and support pages use the current email address', () => {
-  const currentEmail = 'matthewt0821@hotmail.com';
+  const currentEmail = 'tryorbitadmin@gmail.com';
 
   for (const fileName of [
     'privacy.html',
